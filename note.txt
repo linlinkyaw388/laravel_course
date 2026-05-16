@@ -29,3 +29,8 @@
 
 -php artisan make:model Flight
 
+-------------------------------------------------
+
+epi 8 
+
+-form convention request 
