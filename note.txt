@@ -1,0 +1,31 @@
+=> https://laravel.com/docs/8.x
+
+
+-composer create-project laravel/laravel:^8.0 example-app
+
+-composer install
+
+-php artisan key:generate
+
+-php artisan serve
+
+
+-------------------------------------------------
+
+
+-epi 6 - route  controller view
+
+-------------------------------------------------
+
+-epi 7 - database
+
+-php artisan make:migration create_posts_table
+
+-php artisan migrate
+
+-php artisan make:seeder UserSeeder
+
+-php artisan db:seed
+
+-php artisan make:model Flight
+
