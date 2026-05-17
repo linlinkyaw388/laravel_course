@@ -87,26 +87,36 @@ epi 10          week5
 
 -php artisan make:controller AuthController
 
-
-
 =>- middleware
-
-
-
-
-
-
-
 
 
 -------------------------------------------------
 
+=> epi 11       week5
 
-week5 
--authentication
-- authorization filter
-- middleware
 -limiting access to users
--handign user roles 
--managing laravel policies
--frontend scaffolding
+- authorization filter      =customized
+
+
+-php artisan make:migration add_user_id_to_posts_table
+-php artisan migrate    
+
+-php artisan make:policy PostPolicy --model=Post
+
+-managing laravel policies ->Gate
+-frontend scaffolding -> compiling assets
+    knowledge of npm run dev / npm run production / npm run watch
+
+
+-------------------------------------------------
+
+        
+
+
+week6 
+-laravel session flash messaging
+-service provider & container 
+-laravel focodes 
+-handling laravel core config 
+-sending mails integrating with mailgun 
+-laravel Hook Events
