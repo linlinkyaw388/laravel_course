@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storePostRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -13,7 +17,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        // $data = Post::all();
+        $data = Post::orderBy('id','desc')->get();
+        return view('home',compact('data'));    
     }
 
     /**
@@ -23,7 +29,8 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('create',compact('categories'));
     }
 
     /**
@@ -32,9 +39,14 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storePostRequest $request)
     {
-        //
+        Post::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category_id' => $request->category,
+        ]);
+        return redirect('/posts');
     }
 
     /**
@@ -43,9 +55,11 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        // dd($id);
+        // $post = Post::findorFail($id);
+        return view('show',compact('post'));
     }
 
     /**
@@ -54,9 +68,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        // $post = Post::findorFail($id);
+        return view('edit',compact('post'));
     }
 
     /**
@@ -66,9 +81,14 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(storePostRequest $request, Post $post)
     {
-        //
+        
+        $post->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return redirect('/posts');
     }
 
     /**
@@ -77,8 +97,11 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        // Post::findorFail($id)->delete();
+        // $post = Post::findorFail($id);
+        $post->delete();
+        return redirect('/posts');
     }
 }
