@@ -33,6 +33,15 @@
                 <textarea class="form-control" name="description" id="" placeholder="Enter description">{{old('name', $post->description)}}</textarea>
             </div><br>
 
+            <div class="form-group">
+                <select name="category_id" id="" class="form-control">
+                    <option value="">Select Category</option>
+                    @foreach($categories as $cat)
+                        <option value="{{$cat->id}}" {{$cat->id == $post->category_id ? 'selected' : ''}}>{{$cat->name}}</option>
+                    @endforeach
+                </select>
+            </div><br>
+
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="/posts" class="btn btn-success">Back</a>
      

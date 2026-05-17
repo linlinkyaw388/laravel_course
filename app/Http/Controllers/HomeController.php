@@ -10,6 +10,12 @@ use App\Models\Category;
 
 class HomeController extends Controller
 {
+    //auth ကို controller ထဲပြောင်းလို့ရတယ်။
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,11 +47,8 @@ class HomeController extends Controller
      */
     public function store(storePostRequest $request)
     {
-        Post::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'category_id' => $request->category,
-        ]);
+        $validated = $request->validated();
+        Post::create($validated);
         return redirect('/posts');
     }
 
@@ -57,8 +60,7 @@ class HomeController extends Controller
      */
     public function show(Post $post)
     {
-        // dd($id);
-        // $post = Post::findorFail($id);
+        
         return view('show',compact('post'));
     }
 
@@ -70,8 +72,8 @@ class HomeController extends Controller
      */
     public function edit(Post $post)
     {
-        // $post = Post::findorFail($id);
-        return view('edit',compact('post'));
+        $categories = Category::all();
+        return view('edit',compact('post','categories'));;
     }
 
     /**
@@ -83,11 +85,8 @@ class HomeController extends Controller
      */
     public function update(storePostRequest $request, Post $post)
     {
-        
-        $post->update([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+        $validated = $request->validated();
+        $post->update($validated);
         return redirect('/posts');
     }
 

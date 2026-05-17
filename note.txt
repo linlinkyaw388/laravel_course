@@ -63,6 +63,33 @@ hasMany->belongsTo
 
 epi 10          week5
 
+=> https://laravel.com/docs/8.x/sanctum
+=> https://laravel.com/docs/8.x/authentication
+=> https://laravel.com/docs/8.x/authorization
+=> https://laravel.com/docs/8.x/middleware
+=> https://laravel.com/docs/8.x/rate-limiting
+=> https://laravel.com/docs/8.x/sanctum#authentication-and-authorization
+=> https://laravel.com/docs/8.x/sanctum#securing-routes
+=> https://laravel.com/docs/8.x/sanctum#protecting-routes-with-policies
+=> https://laravel.com/docs/8.x/sanctum#managing-users
+=> https://laravel.com/docs/8.x/sanctum#managing-user-roles
+=> https://laravel.com/docs/8.x/sanctum#managing-user-permissions
+=> https://laravel.com/docs/8.x/sanctum#user-roles-and-permissions
+
+=> Authentication
+-composer require laravel/jetstream 
+-php artisan jetstream:install livewire
+-npm install  
+-npm run dev
+
+-php artisan route list
+-php artisan migrate        //composer dump-autoload // plateform-check version မညီတာတွေအတွက် ပိတ်ထားဖို့လို။
+
+-php artisan make:controller AuthController
+
+
+
+=>- middleware
 
 
 

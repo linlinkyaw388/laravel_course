@@ -13,5 +13,17 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .webpackConfig(require('./webpack.config'));
+
+    // အကယ်၍ အဆင်မပြေပါက ဤကုဒ်ကို အစားထိုးကြည့်ပါ
+   if (mix.inProduction()) {
+       mix.version();
+   } else {
+       // webpack ရဲ့ တရားဝင် ProgressPlugin ပြဿနာကို ကျော်ရန်
+       mix.options({                   
+           manifest: false
+       });
+   }
