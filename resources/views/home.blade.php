@@ -12,9 +12,18 @@
         </div><br>
 
         <div class="card">
+
+        @if (session('status'))
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> {{session('status')}}
+        </div>
+        @endif
+
         <div class="card-header" style="text-align: center;">
             Contents
         </div>
+
         <div class="card-body">
             @foreach($data as $post)
                 <div>

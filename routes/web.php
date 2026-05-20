@@ -1,8 +1,12 @@
 <?php
 
+use App\Container;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\TestFacade;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Util\Test;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +17,30 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+// Route::get('/', function () {
+//     $container = new Container();
+
+//     $container->bind('test',function(){
+//         return new Test();
+//     });
+
+//     $test = $container->resolve('test');
+//     dd($test -> smth());
+// });
+
+// Route::get('/', function (Test $test) {
+//     // dd($test);
+//     // dd(resolve('test'));
+//     // dd(Request::all());
+// });
+
+Route::get('/', function () {
+    // return TestFacade::execute();
+    dd(reslove('test')->execute());
+    // dd(app('test')->execute());
+});
 
 
 // Route::get('/', [HomeController::class, 'index']);

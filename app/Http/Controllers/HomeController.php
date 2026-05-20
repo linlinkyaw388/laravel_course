@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storePostRequest;
+use App\Mail\PostCreated;
+use App\Mail\PostStored;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -23,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-                             //auth()->user()->id
+        // Mail::raw('Hello from Laravel!', function ($message) {
+        //     $message->to('example@example.com', 'Example')->subject('Hello from Laravel!');
+        // }); 
+
+        //                      //auth()->user()->id
         $data = Post::where('user_id',auth()->id())->orderBy('id','desc')->get();
         return view('home',compact('data'));    
     }
@@ -48,8 +56,12 @@ class HomeController extends Controller
     public function store(storePostRequest $request)
     {
         $validated = $request->validated();
-        Post::create($validated);
-        return redirect('/posts');
+        $post = Post::create($validated + ['user_id' => Auth::user()->id]);
+
+        // Mail::to('hlaing@gmail.com')->send(new PostStored($post));
+        Mail::to('hlaing@gmail.com')->send(new PostCreated());
+
+        return redirect('/posts')->with('status',config('aprogrammer.message.created'));
     }
 
     /**

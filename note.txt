@@ -111,12 +111,46 @@ epi 10          week5
 -------------------------------------------------
 
         
+=> epi 12   week6
 
+-collections    vender/src/collections.php 
 
-week6 
--laravel session flash messaging
 -service provider & container 
--laravel focodes 
--handling laravel core config 
--sending mails integrating with mailgun 
--laravel Hook Events
+-php artisan make:provider SampleServiceProvider
+    service provider တွေကို config ထဲမှာ ကြေညာပေးဖို့လို
+
+-laravel facades
+    vender / support / src / Facades    eg.view 
+
+
+-------------------------------------------------
+
+=> epi 13               week6 
+
+-laravel session flash messaging
+-core -config
+
+-mailing
+    storage laravel.log
+    mailtrap.io  .env
+    composer dumpautoload
+     php artisan config:clear
+      php artisan make:mail PostStored
+    
+    -php artisan make:mail PostCreated --markdown=email.postcreated
+
+--laravel Hook Events
+
+-------------------------------------------------
+
+
+
+
+
+
+* ctrl + click - go to definition
+* ctrl + shift + f - search
+* ctrl + shift + p - find references
+* ctrl + shift + b - build
+* ctrl + shift + r - run
+* ctrl + shift + t - test
