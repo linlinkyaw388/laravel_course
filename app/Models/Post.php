@@ -18,10 +18,10 @@ class Post extends Model
         return $this->belongsTo('App\Models\category','category_id');       //foreign key
     }
 
-    protected static function booted(){
-        static::creating(function($post){
-            Mail::to('hlaing@gmail.com')->send(new PostCreated($post));
-        });
-    }
+    // protected static function booted(){
+    //     static::creating(function($post){
+    //         Mail::to('hlaing@gmail.com')->send(new PostCreated($post));
+    //     });
+    // }
     
 }

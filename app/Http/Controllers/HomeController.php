@@ -7,10 +7,14 @@ use App\Mail\PostCreated;
 use App\Mail\PostStored;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\PostCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
+use Mockery\Matcher\Not;
 
 class HomeController extends Controller
 {
@@ -30,6 +34,13 @@ class HomeController extends Controller
         // Mail::raw('Hello from Laravel!', function ($message) {
         //     $message->to('example@example.com', 'Example')->subject('Hello from Laravel!');
         // }); 
+
+        //Notification 1    facade
+        // Notification::send(User::find(1),new PostCreatedNotification());
+        // echo 'noti send';exit();
+        //Notification 2
+        // $user = User::find(1);
+        // $user->notify(new PostCreatedNotification());
 
         //                      //auth()->user()->id
         $data = Post::where('user_id',auth()->id())->orderBy('id','desc')->get();

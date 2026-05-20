@@ -144,8 +144,53 @@ epi 10          week5
 -------------------------------------------------
 
 
+=>epi 14   week7 
+
+-managing laravel notifications
+
+-php artisan make:notification PostCreatedNotification
+-php artisan notification:table   // php artisan    // php artisan migrate
 
 
+-event listener
+
+-php artisan make:event PostCreatedEvent
+-php artisan make:listener PostCreatedEventListener
+-event provider
+
+-livewire
+
+https://livewire.laravel.com/docs/4.x/quickstart
+
+jetstream , laravel ui 
+
+-laravel ui - github 
+https://github.com/laravel/ui
+https://github.com/laravel/jetstream
+
+
+-------------------------------------------------
+
+=>epi 15   week7
+
+-building a customized final laravel project    //Restaurant order system
+
+
+-draw.io
+
+
+
+
+
+
+
+-------------------------------------------------
+
+
+week8 
+-sharing knowledge of api flow 
+-usage of api client postman 
+-sharing knowledge of deploying laravel project
 
 
 * ctrl + click - go to definition
